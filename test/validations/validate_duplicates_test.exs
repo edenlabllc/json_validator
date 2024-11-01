@@ -30,14 +30,14 @@ defmodule JsonValidator.Validations.ValidateDuplicatesTest do
       assert {:error,
               [
                 %DuplicatedKeyError{
-                  message: "Duplicated key b at $",
+                  message: "Duplicated key 'b' at $",
                   key: "b",
-                  path: []
+                  path: "$"
                 },
                 %DuplicatedKeyError{
-                  message: "Duplicated key f at $.a.d",
+                  message: "Duplicated key 'f' at $.a.d",
                   key: "f",
-                  path: ["a", "d"]
+                  path: "$.a.d"
                 }
               ]} =
                ValidateDuplicates.call(
@@ -49,14 +49,14 @@ defmodule JsonValidator.Validations.ValidateDuplicatesTest do
       assert {:error,
               [
                 %DuplicatedKeyError{
-                  message: "Duplicated key b at $.[0]",
+                  message: "Duplicated key 'b' at $.[0]",
                   key: "b",
-                  path: ["0"]
+                  path: "$.[0]"
                 },
                 %DuplicatedKeyError{
-                  message: "Duplicated key f at $.[0].a.d",
+                  message: "Duplicated key 'f' at $.[0].a.d",
                   key: "f",
-                  path: ["0", "a", "d"]
+                  path: "$.[0].a.d"
                 }
               ]} =
                ValidateDuplicates.call(
@@ -68,14 +68,14 @@ defmodule JsonValidator.Validations.ValidateDuplicatesTest do
       assert {:error,
               [
                 %DuplicatedKeyError{
-                  message: "Duplicated key b at $",
+                  message: "Duplicated key 'b' at $",
                   key: "b",
-                  path: []
+                  path: "$"
                 },
                 %DuplicatedKeyError{
-                  message: "Duplicated key f at $.a.d.[1]",
+                  message: "Duplicated key 'f' at $.a.d.[1]",
                   key: "f",
-                  path: ["a", "d", "1"]
+                  path: "$.a.d.[1]"
                 }
               ]} =
                ValidateDuplicates.call(
